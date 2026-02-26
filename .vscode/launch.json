@@ -1,0 +1,39 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch",
+            "cwd": "${workspaceFolder}",
+            "executable": "build/zephyr/zephyr.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "servertype": "openocd",
+            "serverpath": "${env:ESP_OPENOCD}",
+            "gdbPath":"${env:ZEPHYR_GDB}",
+            "device": "${input:device}",
+            "configFiles": ["board/esp32c6-builtin.cfg"],
+            "preLaunchTask": "West Build"
+        },
+        {
+            "name": "Attach",
+            "cwd": "${workspaceFolder}",
+            "executable": "build/zephyr/zephyr.elf",
+            "request": "attach",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "servertype": "openocd",
+            "serverpath": "openocd-esp32/bin/openocd.exe",
+            "gdbPath":"zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb",
+            "device": "${input:device}"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "device",
+            "description": "Device to debug",
+            "type": "promptString",
+            "default": "esp32c6"
+        }
+    ]
+}

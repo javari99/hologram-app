@@ -1,0 +1,68 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "West Build",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": "west",
+            "args": [
+                "build",
+                "-p",
+                "${input:pristine}",
+                "-b",
+                "${input:board}",
+                "${input:extra_args}",
+                "${input:app_path}"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "West Flash",
+            "type": "shell",
+            "command": "west",
+            "args": [
+                "flash"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+    ],
+    "inputs": [
+        {
+            "id": "pristine",
+            "description": "Choose when to run a pristine build",
+            "type": "pickString",
+            "options": [
+                "always",
+                "auto",
+                "never"
+            ],
+            "default": "auto"
+        },
+        {
+            "id": "board",
+            "description": "Select target board, see https://docs.zephyrproject.org/latest/boards/index.html",
+            "type": "promptString",
+            "default": "esp32c6_devkitc/esp32c6/hpcore"
+        },
+        {
+            "id": "extra_args",
+            "description": "Extra arguments (e.g -S flash-4M)",
+            "type": "promptString",
+            "default": "-S flash-4M"
+        },
+        {
+            "id": "app_path",
+            "description": "Relative path of the app to build",
+            "type": "promptString",
+            "default": "app"
+        }
+    ]
+}
