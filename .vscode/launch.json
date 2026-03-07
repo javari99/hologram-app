@@ -12,7 +12,7 @@
             "serverpath": "${env:ESP_OPENOCD}",
             "gdbPath":"${env:ZEPHYR_GDB}",
             "device": "${input:device}",
-            "configFiles": ["board/esp32c6-builtin.cfg"],
+            "configFiles": ["${env:ESP_OPENOCD_SCRIPTS}/board/esp32c6-builtin.cfg"],
             "preLaunchTask": "West Build"
         },
         {
