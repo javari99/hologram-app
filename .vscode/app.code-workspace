@@ -1,6 +1,7 @@
 {
     "folders": [
         {
+            "name": "root",
             "path": ".."
         },
         {
@@ -11,6 +12,9 @@
         }
     ],
     "settings": {
-        "git.repositoryScanMaxDepth": 5
+        "git.repositoryScanMaxDepth": 5,
+        "C_Cpp.default.compileCommands": [
+        "${workspaceFolder:root}/build/compile_commands.json"
+    ],
     }
 }
